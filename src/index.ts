@@ -1,5 +1,5 @@
 function resolve(a: number, b: number) {
-  return a + b
+  return `the result is ${a + b}`
 }
 
-resolve(2, 3)
+console.log(resolve(2, 3))
