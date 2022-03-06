@@ -1,4 +1,3 @@
-
 const messages = {
   isEmpty: 'o atributo não pode vir vazio'
 }
@@ -8,9 +7,8 @@ export class Validations {
 
   isEmpty(value: number | string) {
     const _ = String(value)
-    if(_.length <= 0) this.errors.push(messages.isEmpty)
+    if (_.length <= 0) this.errors.push(messages.isEmpty)
   }
-
 }
 
 // export function validator() {
