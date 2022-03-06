@@ -9,7 +9,9 @@
     "start:dev": "ts-node-dev ./src/index.ts",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
-    "test": "jest"
+    "test": "jest",
+    "test:e2e": "jest --projects ./tests/e2e --runInBand",
+    "test:integration": "jest --projects ./tests/integration --runInBand"
   },
   "author": {
     "name": "Deyvison Borges",
@@ -23,6 +25,7 @@
     "@types/jest": "^27.4.1",
     "@types/module-alias": "^2.0.1",
     "@types/node": "^17.0.21",
+    "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
     "eslint": "^8.10.0",

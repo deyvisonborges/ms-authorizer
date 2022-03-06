@@ -5,13 +5,13 @@ const root = resolve(__dirname)
 module.exports = {
   rootDir: root,
   displayName: 'root-tests',
-  testMatch: ['<rootDir>/tests/**/*.spec.ts'],
+  testMatch: ['<rootDir>/src/**/*.spec.ts'],
   testEnvironment: 'node',
   clearMocks: true,
   preset: 'ts-jest',
   testPathIgnorePatterns: ['/node_modules/'],
   collectCoverage: true,
-  collectCoverageFrom: ['tests/**/*.spec.ts'],
+  collectCoverageFrom: ['src/**/*.spec.ts'],
   coverageReporters: ['text-summary', 'lcov'],
   moduleNameMapper: {
     '@src/(.*)': '<rootDir>/src/$1',
