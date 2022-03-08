@@ -11,7 +11,8 @@
     "lint:fix": "eslint ./src --ext .ts --fix",
     "test": "jest",
     "test:e2e": "jest --projects ./tests/e2e --runInBand",
-    "test:integration": "jest --projects ./tests/integration --runInBand"
+    "test:integration": "jest --projects ./tests/integration --runInBand",
+    "gen:schema": "cd ./prisma/schemas && cat *.prisma >> ../schema.prisma && npx prisma format"
   },
   "author": {
     "name": "Deyvison Borges",
@@ -19,7 +20,8 @@
   },
   "license": "ISC",
   "dependencies": {
-    "module-alias": "^2.2.2"
+    "module-alias": "^2.2.2",
+    "prisma": "^3.10.0"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
