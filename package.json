@@ -12,7 +12,7 @@
     "test": "jest",
     "test:e2e": "jest --projects ./tests/e2e --runInBand",
     "test:integration": "jest --projects ./tests/integration --runInBand",
-    "gen:schema": "cd ./prisma/schemas && cat *.prisma >> ../schema.prisma && npx prisma format"
+    "gen:schema": "awk 1 ./prisma/schemas/*.prisma >> ./prisma/schema.prisma && npx prisma format"
   },
   "author": {
     "name": "Deyvison Borges",
