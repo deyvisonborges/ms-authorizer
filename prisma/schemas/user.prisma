@@ -1,0 +1,7 @@
+model User {
+    id String @unique
+    email String
+    password String
+
+    @@map("users")
+}
