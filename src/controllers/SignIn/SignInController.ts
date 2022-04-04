@@ -2,6 +2,7 @@ import { PrismaClient } from '../../clients/PrismaClient'
 import { CustomRequest } from '../../interfaces/CustomRequest'
 import { Response } from 'express'
 import { ConfirmEmailRequest } from './SignInControllerTypes'
+import { responseHandler } from '../../handlers/ResponseHandler'
 
 class SignInController {
   async confirmEmail(req: CustomRequest<ConfirmEmailRequest>, res: Response) {
@@ -14,19 +15,24 @@ class SignInController {
         }
       })
 
-      if (!user?.email) {
-        return res.json({
-          message: 'e-mail não encontrado'
-        })
-      }
+      // if (!user?.email) {
+      //   return res.json({
+      //     message: 'e-mail não encontrado'
+      //   })
+      // }
 
-      return res.status(200).json({
-        message: 'your receive a email',
-        value: {
-          id: user?.id,
-          email: user?.email
-        }
-      })
+      return res.status(200).json(
+        responseHandler<{
+          message: string
+          value: Record<string, unknown>
+        }>({
+          message: 'your receive a email',
+          value: {
+            id: user?.id,
+            email: user?.email
+          }
+        })
+      )
     } catch (err) {
       throw new Error('could not confirm email')
     }
