@@ -9,18 +9,32 @@ class SignInController {
     try {
       const { email } = req.body
 
+      /**
+       * verifica se foi informado um email
+       */
+      if (typeof email !== 'string' || [null, ''].includes(email))
+        return responseHandler({
+          message: 'Você precisa informar um e-mail'
+        })
+
+      /**
+       * se o e-mail foi informado, é realizado uma
+       * busca para encontrar o dono do e-mail
+       */
       const user = await PrismaClient.user.findFirst({
         where: {
           email
         }
       })
 
-      // if (!user?.email) {
-      //   return res.json({
-      //     message: 'e-mail não encontrado'
-      //   })
-      // }
+      // cenário em que o usuário nao existe
+      if (!user?.email) {
+        return responseHandler({
+          message: 'usuário não encontrado'
+        })
+      }
 
+      // cenário em que o e-mail existe
       return res.status(200).json(
         responseHandler<{
           message: string
