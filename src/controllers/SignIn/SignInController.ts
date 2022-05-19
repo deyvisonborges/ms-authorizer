@@ -13,9 +13,11 @@ class SignInController {
        * verifica se foi informado um email
        */
       if (typeof email !== 'string' || [null, ''].includes(email))
-        return responseHandler({
-          message: 'Você precisa informar um e-mail'
-        })
+        return res.status(422).json(
+          responseHandler({
+            message: 'Você precisa informar um e-mail'
+          })
+        )
 
       /**
        * se o e-mail foi informado, é realizado uma

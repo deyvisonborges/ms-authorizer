@@ -1,13 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { responseHandler } from '../../handlers/ResponseHandler'
 import { NextFunction, Request, Response } from 'express'
 
-export const jwtAuthorizate = (req: Request, res: Response) => {
+export const authorize = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers['x-access-token']
-  console.log('meu ovo', token)
   if (!token) {
-    res.json('nao existe')
-    return
+    return res.status(403).json(
+      responseHandler({
+        message: 'Não foi informado um token'
+      })
+    )
   }
-  console.log('passou')
+  return next()
 }

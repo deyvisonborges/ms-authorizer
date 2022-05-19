@@ -8,9 +8,31 @@ datasource db {
 }
 
 model User {
-  id       String @unique
-  email    String
-  password String
+  id            Int      @unique
+  email         String
+  password      String
+  access_token  String
+  refresh_token String
+  created_at    DateTime
+  updated_at    DateTime
 
+  Module Module[]
   @@map("users")
+}
+
+model Module {
+  id         Int    @unique
+  name       String
+  priority   Int
+  fk_user_id User   @relation(fields: [id], references: [id])
+
+  @@map("modules")
+}
+
+model ModuleResource {
+  id   Int    @unique
+  link String
+  name String
+
+  @@map("modulesResources")
 }
